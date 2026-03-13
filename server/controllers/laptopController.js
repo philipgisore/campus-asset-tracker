@@ -28,12 +28,12 @@ exports.getLaptopById = async (req, res) => {
 exports.registerLaptop = async (req, res) => {
     try {
         //check if laptop already exists
-        const existingLaptop = await laptop.findOne({
+        const existingLaptop = await Laptop.findOne({
             serialNumber: req.body.serialNumber
         });
 
         if(existingLaptop) {
-            return res.status(400).json({ message: 'laptop already registered' });
+            return res.status(400).json({ message: 'Laptop already registered' });
         }
         
         //Create new laptop
@@ -50,7 +50,7 @@ exports.registerLaptop = async (req, res) => {
         //create initial log entry to track registration
         const log = new Log({
             studentName: req.body.studentName,
-            adminNo: req.body.admnNo,
+            adminNo: req.body.adminNo,
             serialNumber: req.body.serialNumber,
             status: 'IN',
             gate: 'Registration'
@@ -58,7 +58,7 @@ exports.registerLaptop = async (req, res) => {
 
         await log.save();
 
-        res.status(201).json({newLaptop});
+        res.status(201).json({ newLaptop });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
@@ -69,19 +69,19 @@ exports.updateLaptop = async (req, res) => {
     try {
         const laptop = await Laptop.findById(req.params.id);
         if (!laptop) {
-            return res.status(404).json({ message: 'laptop not found' });
+            return res.status(404).json({ message: 'Laptop not found' });
         }
 
         Object.assign(laptop, req.body);
-        const updateLaptop = await laptop.save();
-        res.json(updateLaptop);
+        const updatedLaptop = await laptop.save();  // Fixed variable name
+        res.json(updatedLaptop);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
 
 //Delete laptop
-exports.deleteLaptop = async  (req, res) => {
+exports.deleteLaptop = async (req, res) => {
     try {
         const laptop = await Laptop.findById(req.params.id);
         if (!laptop) {
