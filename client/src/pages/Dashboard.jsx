@@ -1,4 +1,5 @@
 import Layout from "../layout/Layout";
+import Statcards from "../components/StatCard";
 
 export default function Dashboard() {
   return (
@@ -6,7 +7,9 @@ export default function Dashboard() {
       title="School Laptop Security"
       subtitle="Gate Management System"
     >
-      <p>Dashboard content goes here</p>
+      <div className="flex flex-col gap-6">
+        <Statcards />
+      </div>
     </Layout>
   );
 }
