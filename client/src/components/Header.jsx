@@ -7,21 +7,19 @@ export default function Header({ title, subtitle }) {
   const stats = { totalAlerts: 0 };
 
   return (
-    <header className="flex items-center justify-between mb-8">
+    <header className="flex items-center justify-between pt-4 pb-4">
 
       {/* Logo + System Name */}
       <div className="flex items-center gap-3">
-        <div className="p-2 rounded-lg bg-blue-600">
-          <ShieldCheck className="text-white w-5 h-5" />
-        </div>
-
+          <ShieldCheck className="text-blue-600 dark:text-blue-400 w-8 h-8" />
+        
         <div>
-          <h1 className="font-semibold text-lg">
+          <h1 className="font-bold text-2xl text-gray-900 dark:text-white">
             {title}
           </h1>
 
           {subtitle && (
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               {subtitle}
             </p>
           )}
@@ -29,21 +27,24 @@ export default function Header({ title, subtitle }) {
       </div>
 
       {/* Right Side Controls */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
 
         <ThemeToggle />
 
         <Link to="/alerts">
           <button
-            className="flex items-center gap-2 px-3 py-2 rounded-lg
-            bg-gray-100 dark:bg-slate-800
-            hover:bg-gray-200 dark:hover:bg-slate-700"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border
+border-[oklch(0.35_0_0)]
+bg-transparent
+hover:bg-gray-100 dark:hover:bg-[oklch(0.22_0_0)]
+text-foreground
+text-sm font-medium transition-colors"
           >
-            <AlertTriangle className="h-5 w-5" />
+            <AlertTriangle className="h-4 w-4 text-black-700 mr-2" />
             Alerts
 
             {stats.totalAlerts > 0 && (
-              <span className="ml-2 text-xs bg-red-500 text-white px-2 py-1 rounded-full">
+              <span className="ml-1 text-xs bg-red-500 text-white px-2 py-0.5 rounded-full">
                 {stats.totalAlerts}
               </span>
             )}
