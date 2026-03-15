@@ -33,11 +33,11 @@ export default function Header({ title, subtitle }) {
 
         <Link to="/alerts">
           <button
-            className="flex items-center gap-2 px-4 py-2 rounded-lg border
-border-[oklch(0.35_0_0)]
-bg-transparent
-hover:bg-gray-100 dark:hover:bg-[oklch(0.22_0_0)]
-text-foreground
+            className="flex items-center gap-2 px-4 py-2 rounded-lg
+border border-gray-200 dark:border-[oklch(0.3_0_0)]
+bg-transparent dark:bg-[oklch(0.30_0_0_/_0.2)]
+hover:bg-gray-100 dark:hover:bg-[oklch(0.30_0_0_/_0.3)]
+text-gray-700 dark:text-white
 text-sm font-medium transition-colors"
           >
             <AlertTriangle className="h-4 w-4 text-black-700 mr-2" />
